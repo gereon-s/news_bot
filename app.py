@@ -34,7 +34,7 @@ report_type = st.selectbox(
 )
 
 
-if report_type == "Single Stock Outlook":
+if report_type == "Stock Report":
     symbol = st.text_input("Stock Symbol")
 
     if symbol:
