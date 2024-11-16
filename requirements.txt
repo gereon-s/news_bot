@@ -3,4 +3,3 @@ llama-index
 openai
 pandas
 plotly
-zipfile
