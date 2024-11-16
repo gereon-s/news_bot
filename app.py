@@ -25,12 +25,12 @@ query_engine = index.as_query_engine(llm=Settings.llm)
 st.title("AI Powered Financial Analyst")
 
 # Create a simple text field for some information which tickers are supported
-st.write("Supported tickers: AAPL, NVDA, GS, GOOGL, INTC")
+st.write("Supported tickers: NVDA, GS, GOOGL, AAPL, INTC")
 st.write("For Historical Performance, please use the exact ticker symbol.")
 
 report_type = st.selectbox(
     "What type of report do you want?",
-    ("Single Stock Outlook", "Historical Performance"),
+    ("Stock Report", "Historical Performance"),
 )
 
 
