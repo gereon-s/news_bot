@@ -5,26 +5,6 @@ from llama_index.embeddings.openai import OpenAIEmbedding
 import streamlit as st
 import plotly.graph_objects as go
 import pandas as pd
-import zipfile
-
-
-# Function to unzip files
-def unzip_files(zip_path, extract_to):
-    if not os.path.exists(extract_to):
-        with zipfile.ZipFile(zip_path, 'r') as zip_ref:
-            zip_ref.extractall(extract_to)
-        print(f"Unzipped {zip_path} to {extract_to}")
-    else:
-        print(f"{extract_to} already exists. Skipping unzip.")
-
-# Unzip storage and stock performance data
-unzip_files('storage.zip', './storage')
-unzip_files('stock_performance.zip', './stock_performance')
-
-# Clean up ZIP files
-os.remove('storage.zip')
-os.remove('stock_performance.zip')
-
 
 # Get API key
 OPENAI_API_KEY = st.secrets["OPENAI_API_KEY"]
@@ -70,7 +50,7 @@ if report_type == "Historical Performance":
 
     if symbol:
         # Load the historical stock data from the corresponding CSV file
-        csv_path = f"./stock_performance/{symbol}_prices_2024-01-01_to_2024-11-16.csv"
+        csv_path = f"{symbol}_prices_2024-01-01_to_2024-11-16.csv"
         if os.path.exists(csv_path):
             data = pd.read_csv(csv_path)
 
