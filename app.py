@@ -5,6 +5,26 @@ from llama_index.embeddings.openai import OpenAIEmbedding
 import streamlit as st
 import plotly.graph_objects as go
 import pandas as pd
+import zipfile
+
+
+# Function to unzip files
+def unzip_files(zip_path, extract_to):
+    if not os.path.exists(extract_to):
+        with zipfile.ZipFile(zip_path, 'r') as zip_ref:
+            zip_ref.extractall(extract_to)
+        print(f"Unzipped {zip_path} to {extract_to}")
+    else:
+        print(f"{extract_to} already exists. Skipping unzip.")
+
+# Unzip storage and stock performance data
+unzip_files('storage.zip', './storage')
+unzip_files('stock_performance.zip', './stock_performance')
+
+# Clean up ZIP files
+os.remove('storage.zip')
+os.remove('stock_performance.zip')
+
 
 # Get API key
 OPENAI_API_KEY = st.secrets["OPENAI_API_KEY"]
